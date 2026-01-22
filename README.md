@@ -30,6 +30,9 @@
 ```bash
 $ npm install
 ```
+npx @nestjs/cli new devmatch --package-manager npm --skip-git --directory .
+npx @nestjs/cli generate module profiles
+npx @nestjs/cli generate controller profiles
 
 ## Compile and run the project
 
