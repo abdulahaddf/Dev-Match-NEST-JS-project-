@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Query, Param, Post, Body } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, Query } from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
 
 @Controller('profiles')
 export class ProfilesController {
@@ -25,4 +26,38 @@ return{
 };
 
 };
+
+// Update profile
+
+@Put('id')
+update(
+    @Param('id') id: string,
+    @Body() UpdateProfileDto : UpdateProfileDto,
+){
+    return {
+        id,
+        name: UpdateProfileDto.name,
+        description: UpdateProfileDto.description,
+    };
 }
+
+// Delete profile
+
+// @Delete(':id')
+// @HttpCode(HttpStatus.ok)
+// remove(@Param('id')id: string){};
+@Delete(':id')
+@HttpCode(HttpStatus.OK)
+remove(@Param('id') id: string) {
+  return {
+    message: `Profile with id ${id} has been deleted.`,
+
+  };
+}
+}
+
+
+
+
+
+
